@@ -1,4 +1,4 @@
-ifndef MAIN_H
+#ifndef MAIN_H
 #define MAIN_H
 char *create_array(unsigned int size, char c);
 char *_strdup(char *str);
@@ -7,5 +7,5 @@ int string_length(char *ptr);
 int **alloc_grid(int width, int height);
 void free_grid(int **grid, int height);
 char *argstostr(int ac, char **av);
-int _putchar(char c)
+int _putchar(char et)
 #endif
