@@ -2,52 +2,34 @@
 #include <stdlib.h>
 
 /**
- * string_nconcat - Entry point
- * function that concatenates two strings
- * @s1: string parameter1
- * @s2: string parameter2
- * @n: maximum number of bytes of s2 to concatenate to s1
- * Return: on Success - NULL if function fails
- * or a pointer to the concatenated space in memory
+ * _calloc - Entry point
+ * function that allocates memory for an array using malloc
+ * @nmemb: number of array elements
+ * @size:number of bytes
+ * Return: on Success - NULL if function fails or if nmemb = 0/size = 0
+ * or a pointer to the allocated memory
  */
-char *string_nconcat(char *s1, char *s2, unsigned int n)
+void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	char *ptr;
-	unsigned int len = n, index;
+	void *mem;
+	char *c;
+	unsigned int index;
 
-	if (s1 == NULL)
+	if (nmemb == 0 || size == 0)
 	{
-		s1 = "";
+		return (NULL);
 	}
-	if (s2 == NULL)
-	{
-		s2 = "";
-	}
-
-	for (index = 0; s1[index]; index++)
-	{
-		len++;
-	}
-
-	ptr = malloc(sizeof(char) * (len + 1));
-
-	if (ptr == NULL)
+	mem = malloc(nmemb * size);
+	if (mem == NULL)
 	{
 		return (NULL);
 	}
 
-	len = 0;
+	c = mem;
 
-	for (index = 0; s1[index]; index++)
+	for (index = 0; index < (nmemb * size); index++)
 	{
-		ptr[len++] = s1[index];
+		c[index] = '\0';
 	}
-
-	for (index = 0; s2[index] && index < n; index++)
-	{
-		ptr[len++] = s2[index];
-	}
-
-	ptr[len] = '\0';
-	return (ptr);
+	return (mem);
 }
